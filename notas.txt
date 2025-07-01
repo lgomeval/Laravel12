@@ -1,0 +1,13 @@
+composer global remove laravel/installer
+composer global require laravel/installer
+
+versión actual de laravel Installer-> 5.15.0 27-06-2025
+
+- laravel new example-app
+
+- composer require --dev laravel-lang/common -> para traducir a español
+    -> php artisan lang:add es 
+    -> modificar en config/app.php -> 'locale' => 'es',
+
+- Configurar la Base de Datos.
+    -> php artisan migrate
