@@ -1,7 +1,7 @@
 composer global remove laravel/installer
 composer global require laravel/installer
 
-versión actual de laravel Installer-> 5.15.0 27-06-2025
+versión actual de laravel Installer-> 5.16 01-07-2025
 
 - laravel new example-app
 
