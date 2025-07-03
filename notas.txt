@@ -12,3 +12,8 @@ Se esta desarrollando con Iconos->https://heroicons.com/
 
 - Configurar la Base de Datos.
     -> php artisan migrate
+
+
+- Comandos Artisan:
+    php artisan config:clear
+    php artisan view:clear  
