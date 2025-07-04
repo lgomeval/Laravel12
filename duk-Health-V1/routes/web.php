@@ -19,4 +19,8 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 });
 
+// Gestion de Usuarios
+Volt::route('usuarios', 'usuarios')->name('usuarios.index');
+
+
 require __DIR__.'/auth.php';

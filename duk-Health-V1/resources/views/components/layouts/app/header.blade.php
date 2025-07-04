@@ -1,4 +1,4 @@
-<flux:header container class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700">
+<flux:header container class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-900">
     <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
     <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" name="Acme Inc."
         class="max-lg:hidden dark:hidden" />
@@ -19,6 +19,8 @@
                 <flux:navmenu.item href="#">Brand guidelines</flux:navmenu.item>
             </flux:navmenu>
         </flux:dropdown>
+        {{-- usuarios --}}
+        <flux:navbar.item icon="users" href="usuarios" label="Usuarios" badge="{{ auth()->user()->count() }}" title="Gestion de Usuarios Registrados">Usuarios</flux:navbar.item>
     </flux:navbar>
     <flux:spacer />
     <flux:navbar class="me-4">
@@ -94,25 +96,6 @@
 <flux:sidebar stashable sticky
     class="lg:hidden bg-zinc-50 dark:bg-zinc-900 border rtl:border-r-0 rtl:border-l border-zinc-200 dark:border-zinc-700">
     <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
-    <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" name="Acme Inc." class="px-2 dark:hidden" />
-    <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc."
-        class="px-2 hidden dark:flex" />
-    <flux:navlist variant="outline">
-        <flux:navlist.item icon="home" href="#" current>Home</flux:navlist.item>
-        <flux:navlist.item icon="inbox" badge="12" href="#">Inbox</flux:navlist.item>
-        <flux:navlist.item icon="document-text" href="#">Documents</flux:navlist.item>
-        <flux:navlist.item icon="calendar" href="#">Calendar</flux:navlist.item>
-        <flux:navlist.group expandable heading="Favorites" class="max-lg:hidden">
-            <flux:navlist.item href="#">Marketing site</flux:navlist.item>
-            <flux:navlist.item href="#">Android app</flux:navlist.item>
-            <flux:navlist.item href="#">Brand guidelines</flux:navlist.item>
-        </flux:navlist.group>
-    </flux:navlist>
-    <flux:spacer />
-    <flux:navlist variant="outline">
-        <flux:navlist.item icon="cog-6-tooth" href="#">Settings</flux:navlist.item>
-        <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
-    </flux:navlist>
 </flux:sidebar>
 
 <!-- Mobile User Menu -->
