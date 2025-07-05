@@ -13,9 +13,9 @@
     @include('components.layouts.app.sidebar')
 
     {{-- Contenido principal --}}
-    <flux:main class="pt-16 px-4 lg:pl-72">
+    <flux:main>
         @isset($header)
-            <div class="mb-4">
+            <div>
                 {{ $header }}
             </div>
         @endisset

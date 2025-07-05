@@ -1,6 +1,5 @@
 <flux:sidebar sticky stashable class="z-40 border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
 
-
     <a href="{{ route('dashboard') }}" class="me-5 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
         <x-app-logo />
     </a>
@@ -99,7 +98,7 @@
 
     {{-- SEGURIDAD & SALUD EN EL TRABAJO--}}
     <flux:navlist class="w-64" variant="outline">
-        <flux:navlist.group heading="Seguridad & salud en el trabajo" icon="clipboard-list" expandable
+        <flux:navlist.group heading="Seguridad & Salud T" icon="clipboard-list" expandable
             :expanded="false">
             <flux:navlist.item href="#" icon="magnifying-glass-circle">Consultar</flux:navlist.item>
         </flux:navlist.group>
