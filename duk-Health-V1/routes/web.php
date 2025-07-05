@@ -20,7 +20,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Gestion de Usuarios
-Volt::route('usuarios', 'usuarios')->name('usuarios.index');
+Route::middleware(['auth'])->group(function () {
+    Volt::route('usuarios', 'usuarios.index')->name('usuarios.index');
+    Volt::route('usuarios/create', 'usuarios.create')->name('usuarios.create');
+    Volt::route('usuarios/{user}/edit', 'usuarios.edit')->name('usuarios.edit');
+});
 
 
 require __DIR__.'/auth.php';

@@ -13,6 +13,9 @@ Se esta desarrollando con Iconos->https://heroicons.com/
 - Configurar la Base de Datos.
     -> php artisan migrate
 
+- Al clonar el proyecto->composer install
+
+
 
 - Comandos Artisan:
     php artisan config:clear

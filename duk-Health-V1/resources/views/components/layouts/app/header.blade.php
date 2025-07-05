@@ -16,7 +16,7 @@
             </flux:navmenu>
         </flux:dropdown>
         {{-- usuarios --}}
-        <flux:navbar.item icon="users" href="usuarios" label="Usuarios" badge="{{ auth()->user()->count() }}" title="Gestion de Usuarios Registrados">Usuarios</flux:navbar.item>
+        <flux:navbar.item icon="users" href="{{ route('usuarios.index') }}" label="Usuarios" badge="{{ auth()->user()->count() }}" title="Gestion de Usuarios Registrados">Usuarios</flux:navbar.item>
     </flux:navbar>
     <flux:spacer />
     <flux:navbar class="me-4">
