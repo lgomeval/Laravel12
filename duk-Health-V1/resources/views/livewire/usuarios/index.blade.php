@@ -5,9 +5,18 @@ use Livewire\WithPagination;
 use App\Models\User;
 
 new class extends Component {
+
+    public $search;
+
     public function render(): mixed
     {
-        $users = User::paginate(10);
+        $users = User::with('roles')
+            ->where('estado', '=', 'activo')
+            ->where(function ($query) {
+                $query->where('name', 'LIKE', '%' . $this->search . '%')->orWhere('email', 'LIKE', '%' . $this->search . '%');
+            })
+            ->OrderBy('created_at', 'desc')
+            ->paginate(5);
 
         return view('livewire.usuarios.index', compact('users'));
     }
@@ -25,10 +34,17 @@ new class extends Component {
             {{ __('Lista de Usuarios Registrados.') }}
         </h1><br>
 
-        <a href="{{ route('usuarios.create') }}"
-            class="inline-block px-3 py-1.5 bg-green-900 text-white rounded-md hover:bg-green-600 transition">
-            <i class="fas fa-plus"></i> {{ __('Nuevo Usuario') }}
-        </a>
+        <div class="grid grid-cols-3 gap-4">
+            <div><a href="{{ route('usuarios.create') }}"
+                    class="inline-block px-3 py-1.5 bg-green-900 text-white rounded-md hover:bg-green-600 transition">
+                    <i class="fas fa-plus"></i> {{ __('Nuevo Usuario') }}
+                </a></div>
+            <div></div>
+            <div>
+                <x-input wire:model='search'/>
+            </div>
+        </div>
+
         {{-- separador --}}
         <hr class="my-4 border-gray-200 dark:border-zinc-700">
 
@@ -54,18 +70,20 @@ new class extends Component {
                     <td class="px-6 py-3">{{ $user->id }}</td>
                     <td class="px-6 py-3 font-medium">{{ $user->name }}</td>
                     <td class="px-6 py-3">{{ $user->email }}</td>
-                    <td class="px-6 py-3">{{ $user->contacto }}</td>
+                    <td class="px-6 py-3">{{ $user->telefono }}</td>
                     <td class="px-6 py-3">{{ $user->cargo }}</td>
-                    <td class="px-6 py-3">{{ $user->role }}</td>
                     <td class="px-6 py-3">
-                        <span
-                            class="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold
-                    {{ $user->estado ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' }}">
-                            {{ $user->estado ? 'Activo' : 'Inactivo' }}
-                        </span>
+                        @if ($user->roles->count())
+                            @foreach ($user->roles as $role)
+                                {{ $role->name }}
+                            @endforeach
+                        @else
+                            <p>Sin Rol Asignado</p>
+                        @endif
                     </td>
+                    <td class="px-6 py-3">{{$user->estado}}</td>
                     <td class="px-6 py-3 text-center">
-                        <a href="{{ route('dashboard', $user) }}"
+                        <a href="{{ route('usuarios.edit', $user->id) }}"
                             class="inline-block px-3 py-1.5 bg-amber-600 text-white rounded-md hover:bg-amber-900 transition">
                             Editar
                         </a>
@@ -73,13 +91,8 @@ new class extends Component {
                 </tr>
             @endforeach
         </x-table>
+        <div class="mt-4">
+            {{ $users->links() }}
+        </div>
     </x-slot>
-
-
-
-
-    <div class="mt-4">
-        {{ $users->links() }}
-    </div>
-
 </div>

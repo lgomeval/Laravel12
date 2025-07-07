@@ -2,7 +2,7 @@
     @props([
         'type' => 'button',
         'href' => null,
-        'variant' => 'primary', // primary, secondary, danger
+        'variant' => 'primary' , 'secondary', 'danger',
         'size' => 'md', // sm, md, lg
         'icon' => null,
         'loading' => false,
@@ -15,6 +15,7 @@
             'primary' => 'bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-indigo-500',
             'secondary' => 'bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-400',
             'danger' => 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
+            'success' => 'bg-green-900 text-white hover:bg-green-700 focus:ring-green-500',
         ];
         $sizes = [
             'sm' => 'px-3 py-1.5 text-sm',
