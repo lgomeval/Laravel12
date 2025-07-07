@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rules\Can;
 use Livewire\Volt\Volt;
 
 Route::get('/', function () {
@@ -20,7 +21,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Gestion de Usuarios
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'can:usuarios'])->group(function () {
     Volt::route('usuarios', 'usuarios.index')->name('usuarios.index');
     Volt::route('usuarios/create', 'usuarios.create')->name('usuarios.create');
     Volt::route('usuarios/{user}/edit', 'usuarios.edit')->name('usuarios.edit');

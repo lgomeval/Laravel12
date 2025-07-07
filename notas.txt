@@ -20,3 +20,6 @@ Se esta desarrollando con Iconos->https://heroicons.com/
 - Comandos Artisan:
     php artisan config:clear
     php artisan view:clear  
+    php artisan migrate:fresh --seed
+
+
