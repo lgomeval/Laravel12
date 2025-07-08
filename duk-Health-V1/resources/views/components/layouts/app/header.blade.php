@@ -16,10 +16,10 @@
             </flux:navmenu>
         </flux:dropdown>
         {{-- usuarios --}}
-        @can(['Dev', 'Admin'])
+        @role(['Dev', 'Admin'])
             <flux:navbar.item icon="users" href="{{ route('usuarios.index') }}" label="Usuarios"
             badge="{{ auth()->user()->count() }}" title="Gestion de Usuarios Registrados">Usuarios</flux:navbar.item>
-        @endcan
+        @endrole
 
     </flux:navbar>
     <flux:spacer />
